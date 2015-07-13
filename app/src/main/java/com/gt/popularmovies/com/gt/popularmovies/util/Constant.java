@@ -7,9 +7,17 @@ public class Constant {
 
     public static String BASE_URL = "http://api.themoviedb.org/3/discover/movie";
 
-    public static String IMAGE_BASE_URL = "http://image.tmdb.org/t/p/w342//";
+    public static String IMAGE_BASE_URL = "http://image.tmdb.org/t/p/";
 
-    public static String MOVIE_DETAIL_IMAGE_BASE_URL = "http://image.tmdb.org/t/p/w500//";
+    public static String MOVIE_DETAIL_IMAGE_BASE_URL = "http://image.tmdb.org/t/p/w185//";
+
+    public static String IMAGE_WIDTH = "w185//";
+
+    public static String IMAGE_WIDTH_L = "w342//";
+
+    public static String IMAGE_POSTER_WIDTH = "w185//";
+
+    public static String IMAGE_POSTER_WIDTH_L = "w500//";
 
     public static String SORT_BY_PARAM = "sort_by";
 

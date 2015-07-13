@@ -1,6 +1,7 @@
 package com.gt.popularmovies.com.gt.popularmovies.com.gt.populatmovies.adapter;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -49,9 +50,14 @@ public class MovieAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
+        String baseUrl = Constant.IMAGE_BASE_URL;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            baseUrl += Constant.IMAGE_WIDTH_L;
+        } else {
+            baseUrl += Constant.IMAGE_WIDTH;
+        }
 
-        Picasso.with(mContext).load(Constant.IMAGE_BASE_URL + mMovies.get(position).getPosterPath()).into(imageView);
-        //imageView.setImageResource(mThumbIds[position]);
+        Picasso.with(mContext).load(baseUrl + mMovies.get(position).getPosterPath()).into(imageView);
         return imageView;
     }
 

@@ -2,6 +2,7 @@ package com.gt.popularmovies;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -42,7 +43,13 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         if (intent != null) {
             movieNameTextView.setText(intent.getStringExtra(Constant.MOVIE_ORIGINAL_TITLE_EXTRA));
-            Picasso.with(mContext).load(Constant.MOVIE_DETAIL_IMAGE_BASE_URL + intent.getStringExtra(Constant.MOVIE_POSTER_IMAGE_EXTRA)).into(posterImage);
+            String baseUrl = Constant.IMAGE_BASE_URL;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                baseUrl += Constant.IMAGE_POSTER_WIDTH_L;
+            } else {
+                baseUrl += Constant.IMAGE_POSTER_WIDTH;
+            }
+            Picasso.with(mContext).load(baseUrl + intent.getStringExtra(Constant.MOVIE_POSTER_IMAGE_EXTRA)).into(posterImage);
             movieRattingTextView.setText(Constant.MOVIE_RATTING_TEXT + "" + Double.toString(intent.getDoubleExtra(Constant.MOVIE_VOTE_AVERAGE_EXTRA, 0.0)));
             movieReleaseDateTextView.setText(Constant.MOVIE_RELEASE_DATE_TEXT + "" + intent.getStringExtra(Constant.MOVIE_RELEASE_DATE_EXTRA));
             movieOverviewTextView.setText(intent.getStringExtra(Constant.MOVIE_OVERVIEW_EXTRA));
