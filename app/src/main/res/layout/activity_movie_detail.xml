@@ -24,8 +24,7 @@
                     android:id="@+id/movie_name_text_view"
                     style="@style/movie_name_text_view"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Test" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -60,8 +59,7 @@
                         android:id="@+id/movie_ratting"
                         style="@style/movie_ratting_releasedate_panel"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="as" />
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/movie_release_date"
