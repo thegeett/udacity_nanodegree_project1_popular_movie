@@ -1,5 +1,8 @@
 package com.gt.popularmovies.com.gt.popularmovies.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -7,7 +10,7 @@ import java.util.List;
 /**
  * Created by geetthaker on 7/10/15.
  */
-public class Movie {
+public class Movie implements Parcelable {
 
     private boolean adult;
     @SerializedName("backdrop_path")
@@ -31,6 +34,75 @@ public class Movie {
     private double voteAverage;
     @SerializedName("vote_count")
     private int voteCount;
+
+
+    public Movie(Parcel in) {
+        this.adult = in.readByte() == 1 ? true : false;
+        this.backdropPath = in.readString();
+        in.readList(genreIds, null);
+        this.id = in.readLong();
+        this.originalLanguage = in.readString();
+        this.originalTitle = in.readString();
+        this.overview = in.readString();
+        this.releaseDate = in.readString();
+        this.posterPath = in.readString();
+        this.popularity = in.readDouble();
+        this.title = in.readString();
+        this.video = in.readByte() == 1 ? true : false;
+        this.voteAverage = in.readDouble();
+        this.voteCount = in.readInt();
+    }
+
+    /**
+     * Describe the kinds of special objects contained in this Parcelable's
+     * marshalled representation.
+     *
+     * @return a bitmask indicating the set of special object types marshalled
+     * by the Parcelable.
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * Flatten this object in to a Parcel.
+     *
+     * @param out   The Parcel in which the object should be written.
+     * @param flags Additional flags about how the object should be written.
+     *              May be 0 or {@link #PARCELABLE_WRITE_RETURN_VALUE}.
+     */
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeByte(adult ? (byte) 1 : 0);
+        out.writeString(backdropPath);
+        out.writeList(genreIds);
+        out.writeLong(id);
+        out.writeString(originalLanguage);
+        out.writeString(originalTitle);
+        out.writeString(overview);
+        out.writeString(releaseDate);
+        out.writeString(posterPath);
+        out.writeDouble(popularity);
+        out.writeString(title);
+        out.writeByte(video ? (byte) 1 : 0);
+        out.writeDouble(voteAverage);
+        out.writeInt(voteCount);
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+
+        @Override
+        public Movie createFromParcel(Parcel source) {
+            return new Movie(source);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
+
 
     public boolean isAdult() {
         return adult;

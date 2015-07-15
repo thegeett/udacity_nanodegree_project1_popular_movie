@@ -27,9 +27,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String MOVIES_LIST = "MOVIES_LIST";
+
     private MovieAdapter movieAdapter;
     private Context mContext;
-    List<Movie> mMovies;
+    ArrayList<Movie> mMovies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        getMovies(Constant.SORT_BY_POPULARITY);
+        if (savedInstanceState != null && savedInstanceState.containsKey(MOVIES_LIST)) {
+            mMovies = savedInstanceState.getParcelableArrayList(MOVIES_LIST);
+            movieAdapter.upDateEntries(mMovies);
+        } else {
+            getMovies(Constant.SORT_BY_POPULARITY);
+        }
+    }
+
+    /**
+     * Save all appropriate fragment state.
+     *
+     * @param savedInstanceState
+     */
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putParcelableArrayList("MOVIES_LIST", mMovies);
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
@@ -130,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(List<Movie> movies) {
                 super.onPostExecute(movies);
-                mMovies = movies;
+                mMovies = (ArrayList<Movie>) movies;
                 movieAdapter.upDateEntries(movies);
             }
         }.execute();
