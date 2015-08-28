@@ -19,6 +19,7 @@ import java.util.List;
 public class MovieAdapter extends BaseAdapter {
     private Context mContext;
     private List<Movie> mMovies;
+    private boolean mFav;
 
     public MovieAdapter(Context c, List<Movie> movies) {
         mContext = c;
@@ -57,12 +58,17 @@ public class MovieAdapter extends BaseAdapter {
             baseUrl += Constant.IMAGE_WIDTH;
         }
 
-        Picasso.with(mContext).load(baseUrl + mMovies.get(position).getPosterPath()).into(imageView);
+        if (mFav) {
+            Picasso.with(mContext).load("file:" + mMovies.get(position).getPosterPath()).into(imageView);
+        } else {
+            Picasso.with(mContext).load(baseUrl + mMovies.get(position).getPosterPath()).into(imageView);
+        }
         return imageView;
     }
 
-    public void upDateEntries(List<Movie> movies) {
+    public void upDateEntries(List<Movie> movies, boolean fav) {
         if (movies != null) {
+            mFav = fav;
             this.mMovies.clear();
             this.mMovies.addAll(movies);
             notifyDataSetChanged();

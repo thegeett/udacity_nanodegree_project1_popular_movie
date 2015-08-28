@@ -39,5 +39,66 @@
         <item name="android:paddingBottom">@dimen/movie_overview_panel_padding_top</item>
     </style>
 
+    <style name="line_separator_view">
+        <item name="android:layout_marginLeft">@dimen/movie_overview_panel_padding</item>
+        <item name="android:layout_marginRight">@dimen/movie_overview_panel_padding</item>
+    </style>
+
+    <style name="movie_trailer_text_view">
+        <item name="android:textSize">@dimen/movie_trailer_text_view</item>
+        <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingTop">@dimen/movie_trailer_text_view_padding</item>
+        <item name="android:paddingBottom">@dimen/movie_trailer_text_view_padding</item>
+    </style>
+
+    <style name="movie_review_text_view">
+        <item name="android:textSize">@dimen/movie_trailer_text_view</item>
+        <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingTop">@dimen/movie_trailer_text_view_padding</item>
+        <item name="android:paddingBottom">@dimen/movie_trailer_text_view_padding</item>
+    </style>
+
+
+    <style name="movie_tailor_parent_panel">
+        <item name="android:layout_marginLeft">@dimen/movie_tailor_name_text_view_padding</item>
+        <item name="android:layout_marginRight">@dimen/movie_tailor_name_text_view_padding</item>
+    </style>
+
+    <style name="movie_tailor_name_text_view">
+        <item name="android:textSize">@dimen/movie_tailor_name_text_size</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/movie_tailor_name_text_view_padding</item>
+        <item name="android:layout_marginBottom">@dimen/movie_tailor_name_text_view_padding</item>
+        <item name="android:paddingLeft">@dimen/movie_tailor_name_text_view_padding</item>
+    </style>
+
+    <style name="movie_tailor_play_image_view">
+        <item name="android:layout_marginTop">@dimen/movie_tailor_name_text_view_padding</item>
+        <item name="android:layout_marginBottom">@dimen/movie_tailor_name_text_view_padding</item>
+    </style>
+
+    <style name="movie_review_parent_panel">
+        <item name="android:layout_marginLeft">@dimen/movie_tailor_name_text_view_padding</item>
+        <item name="android:layout_marginRight">@dimen/movie_tailor_name_text_view_padding</item>
+    </style>
+
+    <style name="movie_review_name_text_view">
+        <item name="android:textSize">@dimen/movie_review_name_text_size</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/movie_review_name_text_view_padding</item>
+    </style>
+
+
+    <style name="movie_review_by_name_text_view">
+        <item name="android:textSize">@dimen/movie_review_name_text_size</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:gravity">right</item>
+        <item name="android:layout_marginBottom">@dimen/movie_review_name_text_view_padding</item>
+    </style>
+
 
 </resources>

@@ -7,6 +7,14 @@ public class Constant {
 
     public static String BASE_URL = "http://api.themoviedb.org/3/discover/movie";
 
+    public static String MOVIE_EXTRA_INFO_URL = "http://api.themoviedb.org/3/movie/";
+
+    public static String YOUTUBE_URL = "https://www.youtube.com/watch?v=";
+
+    public static String TRAILER = "/videos";
+
+    public static String REVIEW = "/reviews";
+
     public static String IMAGE_BASE_URL = "http://image.tmdb.org/t/p/";
 
     public static String MOVIE_DETAIL_IMAGE_BASE_URL = "http://image.tmdb.org/t/p/w185//";
@@ -43,4 +51,9 @@ public class Constant {
 
     public static String MOVIE_POSTER_IMAGE_EXTRA = "MOVIE_POSTER_IMAGE_EXTRA";
 
+    public static String MOVIE_ID_EXTRA = "MOVIE_ID_EXTRA";
+
+    public static String MOVIE_FAV = "MOVIE_FAV";
+
+    public static final String CONTENT_PROVIDER_URL = "com.gt.popularmovies.movie";
 }

@@ -16,4 +16,14 @@
     <dimen name="movie_overview_text_size">14sp</dimen>
     <dimen name="movie_overview_panel_padding">16dp</dimen>
     <dimen name="movie_overview_panel_padding_top">8dp</dimen>
+
+    <dimen name="movie_trailer_text_view">20sp</dimen>
+    <dimen name="movie_trailer_text_view_padding">8sp</dimen>
+
+    <dimen name="movie_tailor_name_text_size">14sp</dimen>
+    <dimen name="movie_tailor_name_text_view_padding">16sp</dimen>
+
+    <dimen name="movie_review_name_text_size">14sp</dimen>
+    <dimen name="movie_review_name_text_view_padding">16sp</dimen>
+
 </resources>

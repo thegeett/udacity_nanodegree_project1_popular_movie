@@ -4,6 +4,7 @@
     <array name="sort_array">
         <item>@string/movie_sort_by_most_popular</item>
         <item>@string/movie_sort_by_highest_ratting</item>
+        <item>@string/movie_sort_by_favorites</item>
     </array>
 
 </resources>

@@ -11,4 +11,11 @@
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
+    <fragment
+        android:id="@+id/movie_detail_fragment"
+        android:name="com.gt.popularmovies.com.gt.popularmovies.fragment.MovieDetailFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2" />
+
 </LinearLayout>

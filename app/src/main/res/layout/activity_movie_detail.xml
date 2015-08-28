@@ -5,7 +5,14 @@
     android:orientation="vertical"
     tools:context="com.gt.popularmovies.MovieDetailActivity">
 
-    <ScrollView
+
+    <fragment
+        android:id="@+id/movie_detail_fragment"
+        android:name="com.gt.popularmovies.com.gt.popularmovies.fragment.MovieDetailFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--<ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -67,6 +74,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="favouriteMovie"
+                        android:text="@string/mark_as_favorite" />
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -76,9 +89,66 @@
                 style="@style/movie_overview_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <View
+                style="@style/line_separator_view"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/movie_trailer_text_view"
+                style="@style/movie_trailer_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/movie_trailer_text" />
+
+            <LinearLayout
+                android:id="@+id/movie_trailer_liner_layout"
+                style="@style/movie_tailor_parent_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ProgressBar
+                    android:id="@+id/movie_trailer_progressBar"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <View
+                style="@style/line_separator_view"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/movie_review_text_view"
+                style="@style/movie_review_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/movie_review_text" />
+
+            <LinearLayout
+                android:id="@+id/movie_review_liner_layout"
+                style="@style/movie_review_parent_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ProgressBar
+                    android:id="@+id/movie_review_progressBar"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
-    </ScrollView>
+    </ScrollView>-->
 
 
 </LinearLayout>

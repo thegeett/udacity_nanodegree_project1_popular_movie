@@ -6,7 +6,13 @@
 
     <string name="movie_sort_by_most_popular">Most Popular</string>
     <string name="movie_sort_by_highest_ratting">Highest Rated</string>
+    <string name="movie_sort_by_favorites">Favorites</string>
+
     <string name="movie_sort_by">Sort by</string>
 
     <string name="title_activity_movie_detail">Movie Details</string>
+    <string name="movie_trailer_text">Trailers:</string>
+    <string name="movie_review_text">Reviews:</string>
+    <string name="mark_as_favorite">Mark As Favorite</string>
+    <string name="movie_selection_message">No movie selected</string>
 </resources>

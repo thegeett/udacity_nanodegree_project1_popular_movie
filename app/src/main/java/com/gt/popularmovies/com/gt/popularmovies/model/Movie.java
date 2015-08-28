@@ -36,6 +36,9 @@ public class Movie implements Parcelable {
     private int voteCount;
 
 
+    public Movie() {
+    }
+
     public Movie(Parcel in) {
         this.adult = in.readByte() == 1 ? true : false;
         this.backdropPath = in.readString();
