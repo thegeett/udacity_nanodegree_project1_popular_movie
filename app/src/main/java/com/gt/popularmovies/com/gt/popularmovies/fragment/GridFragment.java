@@ -79,6 +79,7 @@ public class GridFragment extends Fragment {
         });
 
         if (savedInstanceState != null && (savedInstanceState.containsKey(FAV) && savedInstanceState.getBoolean(FAV))) {
+            fav = true;
             getFevoritesMovie();
         } else if (savedInstanceState != null && savedInstanceState.containsKey(MOVIES_LIST)) {
             mMovies = savedInstanceState.getParcelableArrayList(MOVIES_LIST);

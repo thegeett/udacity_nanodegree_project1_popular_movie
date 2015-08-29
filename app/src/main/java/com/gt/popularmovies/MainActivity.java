@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public void update(HashMap<String, Object> map) {
 
         if (movieDetailFragment != null) {
+            movieDetailFragment.clearData();
             movieDetailFragment.updateScreen(map);
         } else {
             Intent intent = new Intent(mContext, MovieDetailActivity.class);

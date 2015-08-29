@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -38,6 +39,7 @@ import com.gt.popularmovies.com.gt.popularmovies.provider.TrailerContract;
 import com.gt.popularmovies.com.gt.popularmovies.util.Constant;
 import com.gt.popularmovies.com.gt.popularmovies.util.Util;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -147,6 +149,15 @@ public class MovieDetailFragment extends Fragment {
         }
     }
 
+    public void clearData() {
+        if (mTrailers != null) {
+            mTrailers = null;
+        }
+        if (mReviews != null) {
+            mReviews = null;
+        }
+    }
+
     public void updateScreen(HashMap<String, Object> map) {
         if (map != null) {
             movieSelectionMessageLayout.setVisibility(View.GONE);
@@ -177,6 +188,7 @@ public class MovieDetailFragment extends Fragment {
                 } else {
                     trailerProgressbar.setVisibility(View.VISIBLE);
                     movieTrailerLinerLayout.removeAllViews();
+//                    mTrailers.clear();
                     getTrailers(movieId);
                 }
                 if (mReviews != null) {
@@ -184,6 +196,7 @@ public class MovieDetailFragment extends Fragment {
                 } else {
                     reviewProgressBar.setVisibility(View.VISIBLE);
                     movieReviewLinerLayout.removeAllViews();
+//                    mReviews.clear();
                     getReviews(movieId);
                 }
             }
@@ -191,11 +204,42 @@ public class MovieDetailFragment extends Fragment {
     }
 
     public void favouriteMovie() {
-        bitmap = ((BitmapDrawable) posterImage.getDrawable()).getBitmap();
-        String fileName = writeToFile();
-        saveMovie(fileName);
-        saveMovieTrailer();
-        saveMovieReview();
+        if (posterImage.getDrawable() == null) {
+            Target t = new Target() {
+                @Override
+                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                    String fileName = writeToFile(bitmap);
+                    saveMovie(fileName);
+                    saveMovieTrailer();
+                    saveMovieReview();
+                }
+
+                @Override
+                public void onBitmapFailed(Drawable errorDrawable) {
+                }
+
+                @Override
+                public void onPrepareLoad(Drawable placeHolderDrawable) {
+                }
+            };
+
+            String baseUrl = Constant.IMAGE_BASE_URL;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                baseUrl += Constant.IMAGE_POSTER_WIDTH_L;
+            } else {
+                baseUrl += Constant.IMAGE_POSTER_WIDTH;
+            }
+            Picasso.with(mContext)
+                    .load(baseUrl + String.valueOf(mMap.get(Constant.MOVIE_POSTER_IMAGE_EXTRA)))
+                    .into(t);
+        } else {
+            bitmap = ((BitmapDrawable) posterImage.getDrawable()).getBitmap();
+            String fileName = writeToFile(bitmap);
+            saveMovie(fileName);
+            saveMovieTrailer();
+            saveMovieReview();
+        }
+
     }
 
     public void saveMovie(String fileName) {
@@ -226,7 +270,7 @@ public class MovieDetailFragment extends Fragment {
     }
 
     public void saveMovieReview() {
-        if (mTrailers != null) {
+        if (mReviews != null) {
             for (Review review : mReviews) {
                 ContentValues values = new ContentValues();
                 values.put(ReviewContract.ReviewColumns.COLUMN_NAME_MOVIE_ID, Long.parseLong(String.valueOf(mMap.get(Constant.MOVIE_ID_EXTRA))));
@@ -297,7 +341,7 @@ public class MovieDetailFragment extends Fragment {
 
                 movieTrailerLinerLayout.addView(option);
             }
-            mTrailers = null;
+            //mTrailers = null;
         }
     }
 
@@ -366,7 +410,7 @@ public class MovieDetailFragment extends Fragment {
                 byTextView.setText(review.getAuthor());
                 movieReviewLinerLayout.addView(option);
             }
-            mReviews = null;
+            //mReviews = null;
         }
     }
 
@@ -469,12 +513,12 @@ public class MovieDetailFragment extends Fragment {
         return mCurrentPhotoPath;
     }
 
-    private String writeToFile() {
+    private String writeToFile(Bitmap mbitmap) {
         FileOutputStream out = null;
         try {
             String fileName = createImageFile();
             out = new FileOutputStream(fileName);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out); // bmp is your Bitmap instance
+            mbitmap.compress(Bitmap.CompressFormat.PNG, 100, out); // bmp is your Bitmap instance
             // PNG is a lossless format, the compression factor (100) is ignored
             return fileName;
         } catch (Exception e) {
